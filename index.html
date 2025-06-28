@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>bangbaykebab</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 30px;
+      color: #343a40;
+    }
+    table {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    th, td {
+      vertical-align: middle !important;
+    }
+  </style>
+</head>
+<body>
+<div class="container py-4">
+  <h1 class="text-center mb-4">BANGBAY KEBAB</h1>
+
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#halaman1">Halaman 1</a></li>
+    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#halaman2">Halaman 2</a></li>
+    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#halaman3">Halaman 3</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <!-- HALAMAN 1 -->
+    <div class="tab-pane fade show active" id="halaman1">
+      <!-- BAGIAN 1A -->
+      <div class="section-title">Bagian 1A - Stok Awal</div>
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>Nama Barang</th>
+            <th>Jumlah</th>
+            <th>Tambahan</th>
+            <th>Total Awal</th>
+          </tr>
+        </thead>
+        <tbody id="stokAwal">
+          <tr><td>Packaging</td>
+            <td><input type="number" class="form-control" id="awal_packaging" oninput="updateTotal('packaging')"></td>
+            <td><input type="number" class="form-control" id="tambah_packaging" oninput="updateTotal('packaging')"></td>
+            <td id="total_packaging"></td></tr>
+          <tr><td>Tortila</td>
+            <td><input type="number" class="form-control" id="awal_tortila" oninput="updateTotal('tortila')"></td>
+            <td><input type="number" class="form-control" id="tambah_tortila" oninput="updateTotal('tortila')"></td>
+            <td id="total_tortila"></td></tr>
+          <tr><td>Beef (kg)</td>
+            <td><input type="number" step="0.1" class="form-control" id="awal_beef" oninput="updateTotal('beef')"></td>
+            <td><input type="number" step="0.1" class="form-control" id="tambah_beef" oninput="updateTotal('beef')"></td>
+            <td id="total_beef"></td></tr>
+          <tr><td>Egg</td>
+            <td><input type="number" class="form-control" id="awal_egg" oninput="updateTotal('egg')"></td>
+            <td><input type="number" class="form-control" id="tambah_egg" oninput="updateTotal('egg')"></td>
+            <td id="total_egg"></td></tr>
+          <tr><td>Abon</td>
+            <td><input type="number" class="form-control" id="awal_abon" oninput="updateTotal('abon')"></td>
+            <td><input type="number" class="form-control" id="tambah_abon" oninput="updateTotal('abon')"></td>
+            <td id="total_abon"></td></tr>
+          <tr><td>Margarin</td>
+            <td><input type="number" class="form-control" id="awal_margarin" oninput="updateTotal('margarin')"></td>
+            <td><input type="number" class="form-control" id="tambah_margarin" oninput="updateTotal('margarin')"></td>
+            <td id="total_margarin"></td></tr>
+          <tr><td>Keju</td>
+            <td><input type="number" class="form-control" id="awal_keju" oninput="updateTotal('keju')"></td>
+            <td><input type="number" class="form-control" id="tambah_keju" oninput="updateTotal('keju')"></td>
+            <td id="total_keju"></td></tr>
+          <tr><td>Uang (Rp)</td>
+            <td><input type="number" class="form-control" id="awal_uang" oninput="updateTotal('uang')"></td>
+            <td><input type="number" class="form-control" id="tambah_uang" oninput="updateTotal('uang')"></td>
+            <td id="total_uang"></td></tr>
+        </tbody>
+      </table>
+      <button id="btn_konfirmasi_1a" class="btn btn-success mb-3" onclick="toggleKonfirmasi('1a')">Konfirmasi Stok Awal</button>
+      <div id="status_konfirmasi_1a" class="fw-bold mb-3"></div>
+
+      <!-- BAGIAN 1B -->
+      <div class="section-title">Bagian 1B - Stok Akhir</div>
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr><th>Nama Barang</th><th>Jumlah Akhir</th><th>Barang Terpakai</th></tr>
+        </thead>
+        <tbody id="stokAkhir">
+          <tr><td>Packaging</td><td><input type="number" class="form-control" id="akhir_packaging"></td><td id="terpakai_packaging"></td></tr>
+          <tr><td>Tortila</td><td><input type="number" class="form-control" id="akhir_tortila"></td><td id="terpakai_tortila"></td></tr>
+          <tr><td>Beef (kg)</td><td><input type="number" step="0.1" class="form-control" id="akhir_beef"></td><td id="terpakai_beef"></td></tr>
+          <tr><td>Egg</td><td><input type="number" class="form-control" id="akhir_egg"></td><td id="terpakai_egg"></td></tr>
+          <tr><td>Abon</td><td><input type="number" class="form-control" id="akhir_abon"></td><td id="terpakai_abon"></td></tr>
+          <tr><td>Margarin</td><td><input type="number" class="form-control" id="akhir_margarin"></td><td id="terpakai_margarin"></td></tr>
+          <tr><td>Keju</td><td><input type="number" class="form-control" id="akhir_keju"></td><td id="terpakai_keju"></td></tr>
+          <tr><td>Uang (Rp)</td><td><input type="number" class="form-control" id="akhir_uang"></td><td id="terpakai_uang"></td></tr>
+        </tbody>
+      </table>
+      <button id="btn_konfirmasi_1b" class="btn btn-success mb-3" onclick="toggleKonfirmasi('1b')">Konfirmasi Stok Akhir</button>
+      <div id="status_konfirmasi_1b" class="fw-bold mb-3"></div>
+
+      <!-- BAGIAN 1C -->
+      <div class="section-title">Bagian 1C - Stok yang Diperlukan</div>
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr><th>Nama Barang</th><th class="d-none">Kebutuhan</th><th class="d-none">Nominal Dibutuhkan</th><th>Status</th><th>Jumlah Kurang/Lebih</th></tr>
+        </thead>
+        <tbody id="stokPerlu">
+          <tr><td>Packaging</td><td class="d-none">20 pcs</td><td class="d-none">20</td><td id="status_packaging"></td><td id="selisih_packaging"></td></tr>
+          <tr><td>Tortila</td><td class="d-none">20 pcs</td><td class="d-none">20</td><td id="status_tortila"></td><td id="selisih_tortila"></td></tr>
+          <tr><td>Beef</td><td class="d-none">0.5 kg</td><td class="d-none">0.5</td><td id="status_beef"></td><td id="selisih_beef"></td></tr>
+          <tr><td>Egg</td><td class="d-none">8</td><td class="d-none">8</td><td id="status_egg"></td><td id="selisih_egg"></td></tr>
+          <tr><td>Abon</td><td class="d-none">0</td><td class="d-none">0</td><td id="status_abon"></td><td id="selisih_abon"></td></tr>
+          <tr><td>Margarin</td><td class="d-none">1</td><td class="d-none">1</td><td id="status_margarin"></td><td id="selisih_margarin"></td></tr>
+          <tr><td>Keju</td><td class="d-none">1</td><td class="d-none">1</td><td id="status_keju"></td><td id="selisih_keju"></td></tr>
+          <tr><td>Uang</td><td class="d-none">100000</td><td class="d-none">100000</td><td id="status_uang"></td><td id="selisih_uang"></td></tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="cekKebutuhan()">Cek Kebutuhan</button>
+    </div>
+  </div>
+</div>
+
+	<!-- BAGIAN 2A -->
+	<div class="tab-pane fade" id="halaman2">
+	  <div class="section-title">Bagian 2A - Penjualan Menu</div>
+	  <table class="table table-bordered">
+		<thead class="table-light">
+		  <tr>
+			<th>Menu</th>
+			<th>Harga (Rp)</th>
+			<th>Banyaknya</th>
+		  </tr>
+		</thead>
+		<tbody id="tabel_penjualan">
+		  <tr>
+			<td>OE</td>
+			<td>13000</td>
+			<td>
+			  <div class="input-group">
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('oe', -1)">-</button>
+				<input type="number" class="form-control text-center" id="qty_oe" value="0" readonly>
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('oe', 1)">+</button>
+			  </div>
+			</td>
+		  </tr>
+		  <tr>
+			<td>MLE</td>
+			<td>14000</td>
+			<td>
+			  <div class="input-group">
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('mle', -1)">-</button>
+				<input type="number" class="form-control text-center" id="qty_mle" value="0" readonly>
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('mle', 1)">+</button>
+			  </div>
+			</td>
+		  </tr>
+		  <tr>
+			<td>CLE</td>
+			<td>15000</td>
+			<td>
+			  <div class="input-group">
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('cle', -1)">-</button>
+				<input type="number" class="form-control text-center" id="qty_cle" value="0" readonly>
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('cle', 1)">+</button>
+			  </div>
+			</td>
+		  </tr>
+		  <tr>
+			<td>OB</td>
+			<td>15000</td>
+			<td>
+			  <div class="input-group">
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('ob', -1)">-</button>
+				<input type="number" class="form-control text-center" id="qty_ob" value="0" readonly>
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('ob', 1)">+</button>
+			  </div>
+			</td>
+		  </tr>
+		  <tr>
+			<td>MLB</td>
+			<td>16000</td>
+			<td>
+			  <div class="input-group">
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('mlb', -1)">-</button>
+				<input type="number" class="form-control text-center" id="qty_mlb" value="0" readonly>
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('mlb', 1)">+</button>
+			  </div>
+			</td>
+		  </tr>
+		  <tr>
+			<td>CLB</td>
+			<td>17000</td>
+			<td>
+			  <div class="input-group">
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('clb', -1)">-</button>
+				<input type="number" class="form-control text-center" id="qty_clb" value="0" readonly>
+				<button class="btn btn-outline-secondary" onclick="ubahJumlah('clb', 1)">+</button>
+			  </div>
+			</td>
+		  </tr>
+		</tbody>
+		<tfoot class="table-light">
+		  <tr>
+			<th>Total</th>
+			<th id="total_nominal">Rp 0</th>
+			<th id="total_item">0 item</th>
+		  </tr>
+		</tfoot>
+	  </table>
+	</div>
+
+<script>
+const barangList = ['packaging', 'tortila', 'beef', 'egg', 'abon', 'margarin', 'keju', 'uang'];
+
+function updateTotal(key) {
+  const awal = parseFloat(document.getElementById('awal_' + key).value) || 0;
+  const tambah = parseFloat(document.getElementById('tambah_' + key).value) || 0;
+  const total = awal + tambah;
+  document.getElementById('total_' + key).textContent = total;
+}
+
+function toggleKonfirmasi(bagian) {
+  const btn = document.getElementById('btn_konfirmasi_' + bagian);
+  const status = document.getElementById('status_konfirmasi_' + bagian);
+  const isAwal = bagian === '1a';
+
+  barangList.forEach(key => {
+    const idAwal = document.getElementById((isAwal ? 'awal_' : 'akhir_') + key);
+    const idTambah = document.getElementById('tambah_' + key);
+    if (isAwal && idTambah) idTambah.disabled = !idTambah.disabled;
+    if (idAwal) idAwal.disabled = !idAwal.disabled;
+  });
+
+  const disabled = document.getElementById((isAwal ? 'awal_' : 'akhir_') + barangList[0]).disabled;
+  if (disabled) {
+    btn.textContent = 'Konfirmasi Ulang';
+    status.innerHTML = '<span class="text-success">✔️ Data sudah dikonfirmasi</span>';
+    if (!isAwal) hitungTerpakai(); // Update otomatis
+  } else {
+    btn.textContent = isAwal ? 'Konfirmasi Stok Awal' : 'Konfirmasi Stok Akhir';
+    status.innerHTML = '<span class="text-warning">✏️ Edit ulang diperbolehkan</span>';
+  }
+}
+
+function hitungTerpakai() {
+  barangList.forEach(key => {
+    const awal = parseFloat(document.getElementById('awal_' + key).value) || 0;
+    const tambah = parseFloat(document.getElementById('tambah_' + key).value) || 0;
+    const totalAwal = awal + tambah;
+    const akhir = parseFloat(document.getElementById('akhir_' + key).value) || 0;
+    const terpakai = totalAwal - akhir;
+    document.getElementById('terpakai_' + key).textContent = terpakai;
+  });
+}
+
+function cekKebutuhan() {
+  const kebutuhan = {
+    packaging: 20,
+    tortila: 20,
+    beef: 0.5,
+    egg: 8,
+    abon: 0,
+    margarin: 1,
+    keju: 1,
+    uang: 100000
+  };
+  for (let key in kebutuhan) {
+    const akhir = parseFloat(document.getElementById('akhir_' + key).value) || 0;
+    const butuh = kebutuhan[key];
+    const statusEl = document.getElementById('status_' + key);
+    const selisihEl = document.getElementById('selisih_' + key);
+    const selisih = akhir - butuh;
+    statusEl.innerHTML = akhir >= butuh ? '<span class="text-success">Cukup</span>' : '<span class="text-danger">Kurang</span>';
+    selisihEl.textContent = (selisih > 0 ? '+' : selisih < 0 ? '-' : '') + Math.abs(selisih);
+  }
+  hitungTerpakai();
+}
+</script>
+
+<script>
+const daftarMenu = {
+  oe: 13000,
+  mle: 14000,
+  cle: 15000,
+  ob: 15000,
+  mlb: 16000,
+  clb: 17000
+};
+
+function ubahJumlah(menu, delta) {
+  const input = document.getElementById('qty_' + menu);
+  let jumlah = parseInt(input.value) || 0;
+  jumlah += delta;
+  if (jumlah < 0) jumlah = 0;
+  input.value = jumlah;
+  hitungTotal();
+}
+
+function hitungTotal() {
+  let total = 0;
+  let totalItem = 0;
+  for (let menu in daftarMenu) {
+    const jumlah = parseInt(document.getElementById('qty_' + menu).value) || 0;
+    total += jumlah * daftarMenu[menu];
+    totalItem += jumlah;
+  }
+  document.getElementById('total_nominal').textContent = 'Rp ' + total.toLocaleString('id-ID');
+  document.getElementById('total_item').textContent = totalItem + ' item';
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
