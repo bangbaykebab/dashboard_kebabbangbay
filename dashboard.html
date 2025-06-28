@@ -132,93 +132,100 @@
 </div>
 
 	<!-- BAGIAN 2A -->
-	<div class="tab-pane fade" id="halaman2">
+	<div class="tab-pane fade show active" id="halaman2">
 	  <div class="section-title">Bagian 2A - Penjualan Menu</div>
-	  <table class="table table-bordered">
-		<thead class="table-light">
-		  <tr>
-			<th>Menu</th>
-			<th>Harga (Rp)</th>
-			<th>Banyaknya</th>
-		  </tr>
-		</thead>
-		<tbody id="tabel_penjualan">
-		  <tr>
-			<td>OE</td>
-			<td>13000</td>
-			<td>
-			  <div class="input-group">
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('oe', -1)">-</button>
-				<input type="number" class="form-control text-center" id="qty_oe" value="0" readonly>
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('oe', 1)">+</button>
+		<div id="penjualan_list">
+		  <div class="card mb-2">
+			<div class="card-body py-2 d-flex justify-content-between align-items-center">
+			  <div>
+				<div><strong>OE</strong></div>
+				<div class="text-muted">Rp 13.000</div>
 			  </div>
-			</td>
-		  </tr>
-		  <tr>
-			<td>MLE</td>
-			<td>14000</td>
-			<td>
-			  <div class="input-group">
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('mle', -1)">-</button>
-				<input type="number" class="form-control text-center" id="qty_mle" value="0" readonly>
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('mle', 1)">+</button>
+			  <div class="d-flex align-items-center">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('oe', -1)">-</button>
+				<input type="number" id="qty_oe" value="0" readonly class="form-control form-control-sm mx-2 text-center" style="width: 60px;">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('oe', 1)">+</button>
 			  </div>
-			</td>
-		  </tr>
-		  <tr>
-			<td>CLE</td>
-			<td>15000</td>
-			<td>
-			  <div class="input-group">
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('cle', -1)">-</button>
-				<input type="number" class="form-control text-center" id="qty_cle" value="0" readonly>
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('cle', 1)">+</button>
+			</div>
+		  </div>
+
+		  <div class="card mb-2">
+			<div class="card-body py-2 d-flex justify-content-between align-items-center">
+			  <div>
+				<div><strong>MLE</strong></div>
+				<div class="text-muted">Rp 14.000</div>
 			  </div>
-			</td>
-		  </tr>
-		  <tr>
-			<td>OB</td>
-			<td>15000</td>
-			<td>
-			  <div class="input-group">
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('ob', -1)">-</button>
-				<input type="number" class="form-control text-center" id="qty_ob" value="0" readonly>
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('ob', 1)">+</button>
+			  <div class="d-flex align-items-center">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('mle', -1)">-</button>
+				<input type="number" id="qty_mle" value="0" readonly class="form-control form-control-sm mx-2 text-center" style="width: 60px;">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('mle', 1)">+</button>
 			  </div>
-			</td>
-		  </tr>
-		  <tr>
-			<td>MLB</td>
-			<td>16000</td>
-			<td>
-			  <div class="input-group">
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('mlb', -1)">-</button>
-				<input type="number" class="form-control text-center" id="qty_mlb" value="0" readonly>
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('mlb', 1)">+</button>
+			</div>
+		  </div>
+
+		  <div class="card mb-2">
+			<div class="card-body py-2 d-flex justify-content-between align-items-center">
+			  <div>
+				<div><strong>CLE</strong></div>
+				<div class="text-muted">Rp 15.000</div>
 			  </div>
-			</td>
-		  </tr>
-		  <tr>
-			<td>CLB</td>
-			<td>17000</td>
-			<td>
-			  <div class="input-group">
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('clb', -1)">-</button>
-				<input type="number" class="form-control text-center" id="qty_clb" value="0" readonly>
-				<button class="btn btn-outline-secondary" onclick="ubahJumlah('clb', 1)">+</button>
+			  <div class="d-flex align-items-center">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('cle', -1)">-</button>
+				<input type="number" id="qty_cle" value="0" readonly class="form-control form-control-sm mx-2 text-center" style="width: 60px;">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('cle', 1)">+</button>
 			  </div>
-			</td>
-		  </tr>
-		</tbody>
-		<tfoot class="table-light">
-		  <tr>
-			<th>Total</th>
-			<th id="total_nominal">Rp 0</th>
-			<th id="total_item">0 item</th>
-		  </tr>
-		</tfoot>
-	  </table>
-	</div>
+			</div>
+		  </div>
+
+		  <div class="card mb-2">
+			<div class="card-body py-2 d-flex justify-content-between align-items-center">
+			  <div>
+				<div><strong>OB</strong></div>
+				<div class="text-muted">Rp 15.000</div>
+			  </div>
+			  <div class="d-flex align-items-center">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('ob', -1)">-</button>
+				<input type="number" id="qty_ob" value="0" readonly class="form-control form-control-sm mx-2 text-center" style="width: 60px;">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('ob', 1)">+</button>
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="card mb-2">
+			<div class="card-body py-2 d-flex justify-content-between align-items-center">
+			  <div>
+				<div><strong>MLB</strong></div>
+				<div class="text-muted">Rp 16.000</div>
+			  </div>
+			  <div class="d-flex align-items-center">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('mlb', -1)">-</button>
+				<input type="number" id="qty_mlb" value="0" readonly class="form-control form-control-sm mx-2 text-center" style="width: 60px;">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('mlb', 1)">+</button>
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="card mb-2">
+			<div class="card-body py-2 d-flex justify-content-between align-items-center">
+			  <div>
+				<div><strong>CLB</strong></div>
+				<div class="text-muted">Rp 17.000</div>
+			  </div>
+			  <div class="d-flex align-items-center">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('clb', -1)">-</button>
+				<input type="number" id="qty_clb" value="0" readonly class="form-control form-control-sm mx-2 text-center" style="width: 60px;">
+				<button class="btn btn-outline-secondary btn-sm" onclick="ubahJumlah('clb', 1)">+</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+<!-- Total -->
+<div class="mt-3 p-3 bg-light rounded shadow-sm">
+  <div><strong>Total Harga:</strong> <span id="total_nominal">Rp 0</span></div>
+  <div><strong>Total Item:</strong> <span id="total_item">0 item</span></div>
+</div>
+
 
 <script>
 const barangList = ['packaging', 'tortila', 'beef', 'egg', 'abon', 'margarin', 'keju', 'uang'];
